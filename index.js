@@ -3,14 +3,25 @@ import { render } from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
-function A(props){
-  return <p> Hola {props.nombre} </p>
-}
+class Contador extends Component{
 
-function B(props){
-  return <p> {props.nombre}: 10 </p>
-}
+  constructor(props){
+    super(props);
 
+    this.state = {
+      contador: 0
+    }
+  }
+
+  aumentar = ()=>{ this.setState({contador:this.state.contador + 1 })}
+
+  render(){
+    return (<div>
+      <p>{this.state.contador}</p>
+      <button onClick= { this.aumentar }>Aumentar</button>
+    </div>)
+  }
+}
 
 class App extends Component {
   constructor() {
@@ -21,13 +32,10 @@ class App extends Component {
   }
 
   render() {
-
     let nombre = "Mauricio";
-
     return (
       <div>
-         < A nombre={nombre} />
-         < B nombre={nombre} />
+        <Contador />
       </div>
     );
   }
