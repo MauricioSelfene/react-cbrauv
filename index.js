@@ -3,17 +3,14 @@ import { render } from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
-
-function MiComponente(){
-  return <p> Hola mundo </p>;
+function A(props){
+  return <p> Hola {props.nombre} </p>
 }
 
-
-class MiComponenteDeClase extends Component{
-  render(){
-    return <p> Hola soy de la clase </p>;
-  }
+function B(props){
+  return <p> {props.nombre}: 10 </p>
 }
+
 
 class App extends Component {
   constructor() {
@@ -24,12 +21,16 @@ class App extends Component {
   }
 
   render() {
+
+    let nombre = "Mauricio";
+
     return (
       <div>
-         < MiComponente />
+         < A nombre={nombre} />
+         < B nombre={nombre} />
       </div>
     );
   }
 }
-//podemoos retornar con render la funcion o la clase 
+
 render(<App />, document.getElementById('root'));
